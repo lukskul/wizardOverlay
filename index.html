@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wizard Overlay Test</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: lightblue; /* Start with light blue */
-      color: white;
-      font-size: 2rem;
-      font-family: Arial, sans-serif;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitch Overlay</title>
+    
+    <!-- Twitch Extension Helper -->
+    <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
+    
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.twitch.tv; script-src 'self' https://extension-files.twitch.tv; style-src 'self' 'unsafe-inline'; frame-src https://*.twitch.tv; connect-src 'self' https://*.twitch.tv ws://localhost:3000;">
+    
+    <style>
+        body {
+            background-color: #2c3e50; /* Dark blue-gray background */
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
 </head>
 <body>
-  Wizard Overlay is ACTIVE! Finally 🧙‍♂️
+    <div>🧙 Wizard Overlay Active!</div>
 </body>
-
-<script>console.log("working");</script>
 </html>
