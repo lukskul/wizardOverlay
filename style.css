@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+  }
+
+  .wizard {
+    height: 150px; 
+    width: 150px; 
+  }
+  
+  #lightning {
+    position: absolute;
+    top: 10%;
+    left: 45%;
+    width: 100px;
+    height: auto;
+    opacity: 0;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .flash {
+    display: block;
+    animation: lightningFlash 0.5s ease-in-out;
+  }
+  
+  @keyframes lightningFlash {
+    0% {
+      opacity: 0;
+      filter: brightness(2);
+    }
+    50% {
+      opacity: 1;
+      filter: brightness(5);
+    }
+    100% {
+      opacity: 0;
+      filter: brightness(2);
+    }
+  }
+  
+  

@@ -1,0 +1,47 @@
+<!-- overlay/config.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extension Configuration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
+      background-color: #1e1e1e;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+    .config-item {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Extension Configuration</h1>
+  <p>This is the configuration page for the overlay extension. Streamers can adjust settings here.</p>
+
+  <div class="config-item">
+    <label for="overlayMessage">Custom Message:</label>
+    <input type="text" id="overlayMessage" placeholder="Enter a message">
+  </div>
+
+  <div class="config-item">
+    <button onclick="saveConfig()">Save Configuration</button>
+  </div>
+
+  <script>
+    function saveConfig() {
+      const message = document.getElementById('overlayMessage').value;
+      // Here you would save the config, possibly with localStorage or an API call
+      alert('Configuration Saved: ' + message);
+    }
+  </script>
+</body>
+</html>
