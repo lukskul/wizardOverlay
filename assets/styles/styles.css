@@ -5,8 +5,8 @@ body {
 .wizard-container {
     background: transparent;
     position: fixed;
-    width: 50%;
-    height: 50%;
+    width: 55%;
+    height: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
