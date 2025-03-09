@@ -9,4 +9,4 @@ package.json
 package-lock.json
 
 # Ignore img/logo folder
-img/
+img/logo/
