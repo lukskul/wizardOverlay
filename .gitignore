@@ -7,6 +7,3 @@ server.js
 # Ignore package.json and package-lock.json
 package.json
 package-lock.json
-
-# Ignore img/logo folder
-img/logo/
