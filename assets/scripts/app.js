@@ -1,12 +1,12 @@
 // Path to your images
 const img = [
-  'assets/img/wizardAnimation/rest.png', 
-  'assets/img/wizardAnimation/lightning.png',
-  'assets/img/wizardAnimation/beforeLightning.png', 
-  'assets/img/wizardAnimation/talking.png', 
-  'assets/img/wizardAnimation/yelling.png',
-  'assets/img/wizardAnimation/beforeLightningMiddle.png',
-  'assets/img/wizardAnimation/castingSpells.png'
+  'assets/img/rest.png', 
+  'assets/img/lightning.png',
+  'assets/img/beforeLightning.png', 
+  'assets/img/talking.png', 
+  'assets/img/yelling.png',
+  'assets/img/beforeLightningMiddle.png',
+  'assets/img/castingSpells.png'
 ];
 
 let animationInterval;
