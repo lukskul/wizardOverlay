@@ -1,0 +1,38 @@
+body {
+  background: transparent;
+}
+
+.wizard-container {
+    background: transparent;
+    position: fixed;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: -5%; 
+    right: -13%; 
+  }
+  
+  #wizard {
+    width: 100%; /* Fill the container */
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  #wizardText {
+    position: absolute;
+    font-family: 'Courier New', Courier, monospace;
+    bottom: 10px; /* Position it at the bottom of the screen */
+    left: 10px; /* Adjust to the left side, you can also use right: 10px if you prefer */
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+    color: black; /* Text color */
+    padding: 10px; /* Padding inside the text box */
+    border-radius: 5px; /* Optional rounded corners */
+    font-size: 30px; /* Adjust text size as needed */
+    max-width: 80%; /* Ensure the text box doesn't stretch too wide */
+    z-index: 10; /* Ensure the text box is above the video */
+}
+  
