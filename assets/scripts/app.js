@@ -101,16 +101,14 @@ function updateWizardGreeting(message) {
   const wizardTextBox = document.getElementById('wizardText');
   wizardTextBox.innerHTML = message;
 }
+// wizardOverlay.js
+Twitch.ext.onAuthorized((auth) => {
+  const userId = auth.userId; // Twitch provides this
+  const welcomeMessage = `Welcome to the channel!`;
+  updateWizardGreeting(welcomeMessage); // Display the message
 
-// Example usage
-updateWizardGreeting('Welcome new viewer to the stream! The wizard awaits!');
-
-const socket = new WebSocket('wss://lukskul.github.io/wizardOverlay/');
-
-// Listen for messages from the server (like triggering lightning)
-socket.on('message', (message) => {
-    const data = JSON.parse(message);
-    if (data.action === 'lightning') {
-        triggerLightning();  // Trigger the lightning effect in the extension
-    }
+  // Remove the greeting after 3 seconds
+  setTimeout(() => {
+      updateWizardGreeting(''); // Clear the message
+  }, 3000);
 });
