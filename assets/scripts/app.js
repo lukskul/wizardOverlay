@@ -126,76 +126,26 @@ function updateWizardGreeting(message) {
 //       }
 //   }
 // };
+const socket = new WebSocket('ws://localhost:3000'); // WebSocket to your own server
 
-// Authenticate and authorize the extension
 Twitch.ext.onAuthorized((auth) => {
-  const userId = auth.userId; // Get the user ID provided by Twitch
-  const broadcasterId = auth.broadcasterId; // Get the broadcaster's ID
   const welcomeMessage = `✨ Greetings, traveler! You have entered the realm of magic and wonder. Prepare thyself! 🧙‍♂️✨`;
+  updateWizardGreeting(welcomeMessage);
 
-  // Display the welcome message
-  updateWizardGreeting(welcomeMessage); // Display greeting message function
-
-  // Remove the greeting after 3 seconds
   setTimeout(() => {
-    updateWizardGreeting(''); // Clear the message after 3 seconds
+    updateWizardGreeting('');
   }, 3000);
-
-  // Listen for incoming messages from the backend (e.g., for 'startLightning' action)
-  const socket = new WebSocket('wss://pubsub-edge.twitch.tv');
-  
-  // Authenticate with the extension token
-  socket.onopen = () => {
-    const token = generateExtensionToken(broadcasterId); // Use the broadcaster's ID for the token
-    socket.send(JSON.stringify({
-      type: 'LISTEN',
-      topics: [`broadcast-${broadcasterId}`], // Listen to the broadcast topic
-      auth_token: token // Send the auth token for PubSub authentication
-    }));
-  };
-
-  // Handle incoming messages
-  socket.onmessage = (event) => {
-    const data = JSON.parse(event.data);
-    
-    // If a message is received and it contains an action
-    if (data.type === 'MESSAGE' && data.data.message) {
-      const message = JSON.parse(data.data.message);
-      
-      // If the message action is 'startLightning', run the startLightning function
-      if (message.action === 'startLightning') {
-        startLightning(); // Call the function that triggers the lightning effect
-      }
-    }
-  };
 });
 
-// Function to generate the extension token (used for PubSub)
-function generateExtensionToken(broadcasterId) {
-  const secret = process.env.EXTENSION_SECRET;  // Get the extension secret key
-  const payload = {
-    exp: Math.floor(Date.now() / 1000) + 60,  // Token expires in 60 seconds
-    user_id: broadcasterId,  // The broadcaster's user ID
-    role: 'external',  // 'external' for backend services
-    channel_id: broadcasterId,  // Channel ID (same as broadcaster ID)
-    pubsub_perms: {
-      send: ['broadcast']  // Permission to send PubSub messages
-    }
-  };
-  return jwt.sign(payload, Buffer.from(secret, 'base64'), { algorithm: 'HS256' }); // Return signed token
-}
-
-// Function to display or clear the greeting message
-function updateWizardGreeting(message) {
-  // Logic to display the message in your extension (e.g., show the message in the overlay)
-  const greetingElement = document.getElementById('greeting-message');
-  if (greetingElement) {
-    greetingElement.innerHTML = message; // Set the greeting message
+// Listen for WebSocket messages from your server
+socket.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+  if (data.action === 'startLightning') {
+    startLightning();
   }
-}
+};
 
-// Function to start the lightning effect
-function startLightning() {
-  console.log('⚡ Lightning effect triggered!');
-  // Add the logic for your lightning effect here (e.g., animations)
+// Simulate a lightning request (you can replace this with any event)
+function triggerLightning() {
+  socket.send(JSON.stringify({ action: 'triggerLightning' }));
 }
