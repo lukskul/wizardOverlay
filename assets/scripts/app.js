@@ -104,3 +104,13 @@ function updateWizardGreeting(message) {
 
 // Example usage
 updateWizardGreeting('Welcome new viewer to the stream! The wizard awaits!');
+
+const socket = new WebSocket('wss://lukskul.github.io/wizardOverlay/');
+
+// Listen for messages from the server (like triggering lightning)
+socket.on('message', (message) => {
+    const data = JSON.parse(message);
+    if (data.action === 'lightning') {
+        triggerLightning();  // Trigger the lightning effect in the extension
+    }
+});
