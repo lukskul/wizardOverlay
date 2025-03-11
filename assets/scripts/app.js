@@ -23,12 +23,12 @@ if (wizardDiv) {
 
 function stop() {
   if (animationInterval) {
+    document.getElementById('wizard').style.backgroundImage = `url(${img[0]})`;
     clearInterval(animationInterval);
     animationInterval = null;
-    document.getElementById('wizard').style.backgroundImage = `url(${img[0]})`;
-
     wizardDiv.style.transition = 'background-image 0.5s ease-in-out';
     document.body.style.backgroundColor = '';
+    wizardDiv.classList.remove("wizard"); 
   }
 }
 
@@ -36,6 +36,7 @@ function clearRestImage() {
   wizardDiv.style.transition = ''; // Remove transition when starting animations
   if (wizardDiv.style.backgroundImage.includes(img[0])) {
     wizardDiv.style.backgroundImage = '';
+    wizardDiv.classList.remove("wizard"); 
   }
 }
 
@@ -43,109 +44,133 @@ function startTalking() {
   if (!wizardDiv) return;
 
   if(!animationInterval){
-    clearRestImage();
+    wizardDiv.classList.add("wizard"); 
     animationInterval = setInterval(() => {
       currentImage = currentImage === 3 ? 4 : 3; 
       wizardDiv.style.backgroundImage = `url(${img[currentImage]})`; 
+      clearRestImage(); 
     }, 100);
   }
 }
 
 function startYelling() {
   if (!wizardDiv) return;
-
   if(!animationInterval){
-    clearRestImage();
+    wizardDiv.classList.add("wizard");
     animationInterval = setInterval(() => {
-      currentImage = currentImage === 0 ? 4 : 0; 
+      currentImage = currentImage === 4 ? 3 : 4; 
       wizardDiv.style.backgroundImage = `url(${img[currentImage]})`; 
-    }, 300);
+      clearRestImage(); 
+    }, 100);
   }
 }
 
 function startCastingSpells() {
   if (!wizardDiv) return;
 
+  let spell = [
+    "Incendio Ignis!",          // Fireball spell
+    "Vitae Lux!",               // Heal spell
+    "Electra Fulmina!",         // Lightning strike
+    "Aegis Custos!",            // Shield spell
+    "Glacius Frigus!",          // Frostbite
+    "Teleportum Verto!",        // Teleport
+    "Invisibilis Umbra!",       // Invisibility
+    "Evoco Familiaris!",        // Summon Familiar
+    "Levitateus!",              // Levitation
+    "Tempus Rerum!",            // Time stop
+    "Nox Aether!",              // Darkness spell
+    "Flamma Pyra!",             // Flame wave
+    "Miragea Illusio!"          // Illusion spell
+  ];
+
+  let randomSpell = spell[Math.floor(Math.random() * spell.length)];
+
   if(!animationInterval){
-    clearRestImage();
     animationInterval = setInterval(() => {
       currentImage = currentImage === 5 ? 6 : 5; 
       wizardDiv.style.backgroundImage = `url(${img[currentImage]})`; 
-    }, 300);
+      clearRestImage();
+      wizardGreeting(randomSpell);
+    }, 200);
+
+    setTimeout(() => {
+      stop(); 
+      randomSpell = ''; 
+      wizardGreeting('');
+    }, 2000); 
   }
 }
 
 // Lightning effect function
 function startLightning() {
-  if (!wizardDiv) return;
 
-  if (!animationInterval) {
-    clearRestImage();
-    animationInterval = setInterval(() => {
-      currentImage = currentImage === 2 ? 1 : 2;
-      wizardDiv.style.backgroundImage = `url(${img[currentImage]})`;
+    if (!wizardDiv) return;
 
-      body.style.backgroundColor = currentImage === 1 ? 'white' : 'black';
-      body.style.transition = 'background-color 0.09s ease-in-out';
-    }, 10); // Change every 200ms
-  }
+    if (!animationInterval) {
+      animationInterval = setInterval(() => {
+        currentImage = currentImage === 2 ? 1 : 2;
+        wizardDiv.style.backgroundImage = `url(${img[currentImage]})`;
+  
+        body.style.backgroundColor = currentImage === 1 ? 'white' : 'black';
+        body.style.transition = 'background-color 0.09s ease-in-out';
+        clearRestImage();
+      }, 10); 
+
+      setTimeout(() => {
+        stop(); 
+      }, 2000); 
+    }
+
 }
 
 // Example: Start and stop on button click
-document.getElementById('stopButton').addEventListener('click', stop);
 document.getElementById('startButtonLightning').addEventListener('click', startLightning);
-document.getElementById('startButtonTalking').addEventListener('click', startTalking); 
-document.getElementById('startButtonYelling').addEventListener('click', startYelling); 
 document.getElementById('startButtonCastingSpells').addEventListener('click', startCastingSpells); 
 
-function updateWizardGreeting(message) {
+function wizardGreeting(message) {
   const wizardTextBox = document.getElementById('wizardText');
   wizardTextBox.innerHTML = message;
+
+  if (message) {
+    startTalking(); // Start talking when there’s a message
+  } else {
+    stop(); // Stop when the message disappears
+  }
 }
-// // wizardOverlay.js
-// Twitch.ext.onAuthorized((auth) => {
-//   const userId = auth.userId; // Twitch provides this
-//   const welcomeMessage = `✨ Greetings, traveler! You have entered the realm of magic and wonder. Prepare thyself! 🧙‍♂️✨`;
-//   updateWizardGreeting(welcomeMessage); // Display the message
-
-//   // Remove the greeting after 3 seconds
-//   setTimeout(() => {
-//       updateWizardGreeting(''); // Clear the message
-//   }, 3000);
-// });
-
-// // Listen for incoming messages
-// socket.onmessage = (event) => {
-//   const data = JSON.parse(event.data);
-  
-//   if (data.type === 'MESSAGE' && data.data.message) {
-//       const message = JSON.parse(data.data.message);
-      
-//       if (message.action === 'startLightning') {
-//           startLightning(); // Run your startLightning function
-//       }
-//   }
-// };
-const socket = new WebSocket('ws://localhost:3000'); // WebSocket to your own server
 
 Twitch.ext.onAuthorized((auth) => {
-  const welcomeMessage = `✨ Greetings, traveler! You have entered the realm of magic and wonder. Prepare thyself! 🧙‍♂️✨`;
-  updateWizardGreeting(welcomeMessage);
+  const welcomeMessage = `✨ Greetings, traveler!`; 
+  wizardGreeting(welcomeMessage);
 
-  setTimeout(() => {
-    updateWizardGreeting('');
+  setTimeout(() => { 
+    wizardGreeting(''); // Clear message after 3s, stop talking
   }, 3000);
 });
 
-// Listen for WebSocket messages from your server
-socket.onmessage = (event) => {
-  const data = JSON.parse(event.data);
-  if (data.action === 'startLightning') {
-    startLightning();
-  }
-};
+//You have entered the realm of magic and wonder. Prepare thyself! 🧙‍♂️✨`;
 
-// Simulate a lightning request (you can replace this with any event)
-function triggerLightning() {
-  socket.send(JSON.stringify({ action: 'triggerLightning' }));
-}
+let clickCount = 0;
+
+document.getElementById('wizard').addEventListener('click', () => {
+    if (clickCount >= 6) return;
+
+    clickCount++;
+
+    if (clickCount === 6) {
+        startLightning(); 
+        wizardGreeting("STOP!!!");
+        setTimeout(() => {
+            stop();
+            wizardGreeting('');
+
+        }, 800);
+    } else {
+        startCastingSpells();
+
+        setTimeout(() => {
+            stop();
+        }, 800);
+    }
+});
+
