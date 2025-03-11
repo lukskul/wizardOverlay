@@ -36,16 +36,25 @@ body {
     color: black; /* Text color */
     padding: 10px; /* Padding inside the text box */
     border-radius: 5px; /* Optional rounded corners */
-    font-size: 30px; /* Adjust text size as needed */
+    font-size: 2rem; /* Adjust text size as needed */
     max-width: 80%; /* Ensure the text box doesn't stretch too wide */
     z-index: 10; /* Ensure the text box is above the video */
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: row; /* Stack buttons vertically */
+    gap: 10px; /* Space between buttons */
+    text-align: center; /* Center text inside buttons */
+    margin-left: 30%; 
+    margin-right: 30%; 
   }
 
 .button {
   background: linear-gradient(135deg, #6b5b95, #b8a9c9);
   color: #ffd700; /* Gold text, naturally */
   font-family: 'Cinzel', serif;
-  font-size: 18px;
+  font-size: 1.2rem;
   padding: 12px 24px;
   border: 2px solid #ffd700;
   border-radius: 12px;
@@ -79,6 +88,75 @@ body {
   animation: sparkle 1s infinite;
 }
 
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .wizard-container {
+    width: 70%; /* Adjust the wizard container size for tablets */
+    height: 60%;
+    right: -10%; /* Adjust for smaller screens */
+  }
 
+  #wizardText {
+    font-size: 1.5rem; /* Adjust font size for tablets */
+    max-width: 90%; /* Make the text box wider */
+  }
 
-  
+  .button {
+    font-size: 1rem; /* Shrink font size */
+    padding: 10px 20px; /* Adjust padding for smaller screens */
+  }
+
+  .button-container {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
+
+@media (max-width: 768px) {
+  .wizard-container {
+    width: 80%; /* Adjust the wizard container size for smaller devices */
+    height: 50%;
+    right: -5%;
+  }
+
+  #wizardText {
+    font-size: 1.2rem; /* Adjust font size for small screens */
+    max-width: 95%; /* Ensure the text box fits well */
+  }
+
+  .button {
+    font-size: 0.9rem; /* Shrink font size further */
+    padding: 8px 18px; /* Adjust padding */
+  }
+
+  .button-container {
+    margin-left: 10%;
+    margin-right: 10%;
+    flex-direction: column; /* Stack buttons vertically on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .wizard-container {
+    width: 90%; /* Adjust wizard container to be wider on mobile */
+    height: 40%;
+    right: 0;
+  }
+
+  #wizardText {
+    font-size: 1rem; /* Reduce font size further */
+    max-width: 100%;
+  }
+
+  .button {
+    font-size: 0.8rem; /* Shrink font size for very small screens */
+    padding: 8px 16px; /* Adjust padding */
+  }
+
+  .button-container {
+    margin-left: 5%;
+    margin-right: 5%;
+    flex-direction: column; /* Stack buttons vertically on small screens */
+    gap: 8px; /* Reduce gap between buttons */
+  }
+}

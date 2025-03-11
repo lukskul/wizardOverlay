@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wizard Overlay</title>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <title>Wizard Overlay</title>
     
-    <!-- Twitch Extension Helper -->
-    <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
-    <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.twitch.tv; script-src 'self' https://extension-files.twitch.tv; style-src 'self' 'unsafe-inline'; frame-src https://*.twitch.tv; connect-src 'self' https://*.twitch.tv ws://localhost:3000;"> 
-    <link rel="stylesheet" href="assets/styles/styles.css"></link>
-</head>  
-<body>
-    <button class="button" id="startButtonCastingSpells">Cast a Spell</button>
-    <button class="button" id="startButtonLightning">Summon Lightning</button>
-    <div id="wizardText"></div>
-    <div class="wizard-container">
-        <div id="wizard"></div>
-    </div>
-</body>
-<script src="assets/scripts/app.js"></script>
-</html>
+        <!-- Twitch Extension Helper -->
+        <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
+    
+        <!-- Content Security Policy -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.twitch.tv; script-src 'self' https://extension-files.twitch.tv; style-src 'self' 'unsafe-inline'; frame-src https://*.twitch.tv; connect-src 'self' https://*.twitch.tv ws://localhost:3000;"> 
+        <link rel="stylesheet" href="assets/styles/styles.css">
+    </head>
+    <body>
+        <div class="button-container">
+            <button class="button" id="startButtonCastingSpells">Cast a Spell</button>
+            <button class="button" id="startButtonLightning">Summon Lightning</button>
+        </div>
+        <div id="wizardText"></div>
+        <div class="wizard-container">
+            <div id="wizard"></div>
+        </div>
+        <script src="assets/scripts/app.js"></script>
+    </body>
+    </html>
+    

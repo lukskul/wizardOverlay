@@ -29,6 +29,7 @@ function stop() {
     wizardDiv.style.transition = 'background-image 0.5s ease-in-out';
     document.body.style.backgroundColor = '';
     wizardDiv.classList.remove("wizard"); 
+    wizardGreeting(''); 
   }
 }
 
@@ -132,6 +133,13 @@ function wizardGreeting(message) {
   const wizardTextBox = document.getElementById('wizardText');
   wizardTextBox.innerHTML = message;
 
+  if (message === '') {
+    wizardTextBox.style.display = "none"; // Hide the div when there's no content
+  } else {
+    wizardTextBox.style.display = "block"; // Show the div when there's content
+    wizardTextBox.textContent = content; // Set the text content
+  }
+
   if (message) {
     startTalking(); // Start talking when there’s a message
   } else {
@@ -162,12 +170,13 @@ document.getElementById('wizard').addEventListener('click', () => {
         wizardGreeting("STOP!!!");
         setTimeout(() => {
             stop();
-            wizardGreeting('');
-
-        }, 800);
+        }, 2000);
     } else {
-        startCastingSpells();
-
+      animationInterval = setInterval(() => {
+        currentImage = currentImage === 5 ? 6 : 5; 
+        wizardDiv.style.backgroundImage = `url(${img[currentImage]})`; 
+        clearRestImage();
+      }, 200);
         setTimeout(() => {
             stop();
         }, 800);
