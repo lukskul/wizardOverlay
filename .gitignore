@@ -9,9 +9,8 @@ package.json
 package-lock.json
 
 /build
-
 /dist
-
 /webpack.config.js
 
 /src/index.js
+/assets/img
