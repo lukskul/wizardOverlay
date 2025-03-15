@@ -1,20 +1,20 @@
 
 const wizard = [
-  '/assets/img/rest.png', 
-  '/assets/img/lightning.png',
-  '/assets/img/beforeLightning.png', 
-  '/assets/img/talking.png', 
-  '/assets/img/yelling.png',
-  '/assets/img/beforeLightningMiddle.png',
-  '/assets/img/castingSpells.png',
+  'https://lukskul.github.io/wizardOverlay/assets/img/rest.png', 
+  'https://lukskul.github.io/wizardOverlay/assets/img/lightning.png',
+  'https://lukskul.github.io/wizardOverlay/assets/img/beforeLightning.png', 
+  'https://lukskul.github.io/wizardOverlay/assets/img/talking.png', 
+  'https://lukskul.github.io/wizardOverlay/assets/img/yelling.png',
+  'https://lukskul.github.io/wizardOverlay/assets/img/beforeLightningMiddle.png',
+  'https://lukskul.github.io/wizardOverlay/assets/img/castingSpells.png',
 ];
 
 const fireImage = [
-  '/assets/img/fire1.png',
-  '/assets/img/fire2.png',
-  '/assets/img/fire3.png',
-  '/assets/img/fire4.png',
-  '/assets/img/fire5.png'
+  'https://lukskul.github.io/wizardOverlay/assets/img/fire1.png',
+  'https://lukskul.github.io/wizardOverlay/assets/img/fire2.png',
+  'https://lukskul.github.io/wizardOverlay/assets/img/fire3.png',
+  'https://lukskul.github.io/wizardOverlay/assets/img/fire4.png',
+  'https://lukskul.github.io/wizardOverlay/assets/img/fire5.png'  
 ]
 
 let animationInterval;
