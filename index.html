@@ -8,11 +8,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
         <title>Wizard Overlay</title>
-        <!-- Twitch Extension Helper -->
+<!--
         <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
-        <!-- Content Security Policy -->
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.twitch.tv; script-src 'self' https://extension-files.twitch.tv; style-src 'self' 'unsafe-inline'; frame-src https://*.twitch.tv; connect-src 'self' https://*.twitch.tv ws://localhost:3000;"> 
-        <link rel="stylesheet" href="assets/styles/style.css">
+-->
+        <!--<link rel="stylesheet" href="assets/styles/style.css">-->
+        <link rel="stylesheet" href="build/style.css">
     </head>
     <body>
         <div id="elements" class="elements"></div>
@@ -21,13 +22,14 @@
             <div id="wizard"></div>
         </div>
         <div class="orb-container">
-            <div id="hand" class="orb"></div>
-            <div id="head" class="orb"></div>
-            <div id="body" class="orb"></div>
-            <div id="staff" class="orb"></div>
+            <div id="orb1" class="orb"></div>
+            <div id="orb2" class="orb"></div>
+            <div id="orb3" class="orb"></div>
+            <div id="orb4" class="orb"></div>
         </div>
 
-        <script src="assets/scripts/app.js"></script>
+        <!--<script src="assets/scripts/app.js"></script>-->
+        <script src="build/scripts.js"></script>
     </body>
     </html>
     
